@@ -2,7 +2,7 @@ import React from "react";
 
 function TableHead({ number, content }) {
   return (
-    <tr>
+    <tr className='head'>
       <th colSpan={number}>{content}</th>
     </tr>
   );
@@ -18,20 +18,12 @@ function TableFoot(number) {
   );
 }
 
-function EditionalHead(content) {
-  <tr>
-    {content.map(info => {
-      return <th>{info}</th>;
-    })}
-  </tr>;
-}
 
-export default function Table({ number, head, edHead, children }) {
+export default function Table({ number, head, children }) {
   return (
     <table>
       <thead>
         <TableHead number={number} content={head} />
-        {edHead !== "" && <EditionalHead content={edHead} />}
       </thead>
       <tbody>{children}</tbody>
       <TableFoot number={number} />

@@ -1,12 +1,14 @@
 import React from "react";
 import { fetchAllTeams } from "../utils/api";
+import Table from "./Table";
+
 
 export default class Teams extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       year: "2019",
-      teams: {}
+      teams: []
     };
   }
   getTeams(year) {
@@ -22,6 +24,29 @@ export default class Teams extends React.Component {
     this.getTeams(this.state.year);
   }
   render() {
-    return <div>Teams</div>;
+    return (
+      <React.Fragment>
+        <h2>Constructors Championship</h2>
+        <Table
+          number={4}
+          head={`Constructors Championship Standings-${this.state.year}`}
+        >
+          {this.state.teams.map(({ position, points, Constructor }) => {
+            const { constructorId, name, nationality, url } = Constructor;
+
+            return (
+              <tr key={constructorId}>
+                <td className='head'>{position}</td>
+                <td>
+                  {name}
+                </td>
+                <td>Details</td>
+                <td className='head'>{points}</td>
+              </tr>
+            );
+          })}
+        </Table>
+      </React.Fragment>
+    );
   }
 }

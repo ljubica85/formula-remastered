@@ -68,3 +68,7 @@ td {
   color: rgb(20, 22, 22);
   background-color: rgb(230, 218, 218);
 }
+.head{
+  text-align: left;
+  font-weight: bold;
+}
